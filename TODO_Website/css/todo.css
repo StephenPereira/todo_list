@@ -164,11 +164,18 @@ button:focus {
     transition-duration: 0.5s;
 }
 
-/* Shrink input box in order to fit on smaller screens */
+/* Shrink or increase list size in order to fit on smaller or larger screens */
 
-@media screen and (max-width: 553px) {
+@media screen and (max-width: 600px) {
     .todo_list {
         width: 450px;
+        transition-duration: 0.5s;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .todo_list {
+        width: 70%;
         transition-duration: 0.5s;
     }
 }

@@ -26,6 +26,7 @@ h1 {
     margin: auto;
     background-color: #f2f2f2;
     box-shadow: 1px 3px 10px darkgray;
+    transition-duration: 0.5s;
 }
 
 /* Div wrappers for the title and entry sections */
@@ -161,4 +162,13 @@ button:focus {
 .checkbox > input:focus {
     border: 2px solid #41B883;
     transition-duration: 0.5s;
+}
+
+/* Shrink input box in order to fit on smaller screens */
+
+@media screen and (max-width: 553px) {
+    .todo_list {
+        width: 450px;
+        transition-duration: 0.5s;
+    }
 }

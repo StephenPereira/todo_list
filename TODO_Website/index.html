@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/todo.css">
+    <!-- Google Fonts external script for Lato -->
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="./js/index.js"></script>
+</head>
+<body>
+    <!-- Title of the page -->
+    <div class="title" role="text">
+        <h1>A Very Simple To-Do List.</h1>
+    </div> 
+    <!-- The to-do list. All items will be contained within this div -->
+    <div class="todo_list" role="list">
+
+        <div class="title_wrapper" role="text">
+                <!-- Input field for the title, allows you to set a name for the list -->
+                <input class="list_title" placeholder="Title..." type="text" aria-label="Title Input">
+                <button class="clear_btn_title" aria-label="Clear Title" onclick="clearTitle()">x</button>
+        </div>
+    
+        
+        <div class="entry_wrapper" role="listitem">
+                <!-- Line to enter actual list elements -->
+                <input class="list_entry" placeholder="I have to..." type="text" aria-label="Enter list item">
+                <button class="clear_btn_entry" aria-label="Clear item entry" onclick="clearEntry()">x</button>
+        </div>
+    </div>
+</body>
+</html>

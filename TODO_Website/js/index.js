@@ -1,8 +1,9 @@
 const list = ".todo_list";
 const title = ".list_title";
 const entry = ".list_entry";
+const item = ".list_item";
 const btn_title = ".clear_btn_title";
-const btn_entry = ".clear_btn_entry"
+const btn_entry = ".clear_btn_entry";
 
 // 1. HELPER FUNCTIONS
 
@@ -58,7 +59,7 @@ window.onload = () => {
     toggleBtn.showBtn(entry, btn_entry);
     // Will insert only if enter is pressed and there is text inside the field
     document.querySelector(entry).addEventListener('keypress', (e) => {
-        if (e.key === 'Enter' && textLen(".list_entry") > 0) {
+        if (e.key === 'Enter' && textLen(entry) > 0) {
             addEntry();
         }
     });
@@ -79,16 +80,11 @@ const addEntry = () => {
         <label class="checkbox">
             <input type="checkbox" class="checkbox" aria-label="Check item off list" onclick="crossEntry(${item_id})">
         </label>
-        <input class="list_item" aria-label="Edit list item" value="${list_item}">
+        <input class="list_item" aria-label="Edit list item" value="${list_item}" onblur="checkEmpty(${item_id})">
         <button class="clear_btn" aria-label="Remove item off list" onclick="delEntry(${item_id})">x</button>
     </div>
     `;
     document.querySelector(".todo_list").insertAdjacentHTML('beforeend', list_item_entry);
-};
- 
-// Function deletes the item from the list 
-const delEntry = (item_id) => {
-    document.getElementById(item_id).remove();
 };
 
 // Function crosses off item in list when button is pressed
@@ -99,5 +95,23 @@ const crossEntry = (item_id) => {
     } else {
         item.style.textDecorationLine = "line-through";  
     }
-    console.log(item.style.textDecorationLine);
+};
+
+// 4. DELETE FUNCTIONS
+
+// Function deletes the item from the list 
+const delEntry = (item_id) => {
+    document.getElementById(item_id).remove();
+};
+
+// If an entry in the list is empty and user exits field, the item is deleted
+const checkEmpty = (item_id) => { 
+    if (document.getElementById(item_id)) {
+        const listEntry = document.getElementById(item_id).querySelector(item).value.length;
+        const entryField = document.querySelector(entry);
+        if (listEntry == 0) {
+            delEntry(item_id);
+            entryField.focus();
+        }
+    }
 };

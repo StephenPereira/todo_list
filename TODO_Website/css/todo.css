@@ -5,8 +5,8 @@ html {
 }
 
 body {
-    background-color: #ebf2f7;
-    font-family: 'Lato', sans-serif;
+    background-color: #F8F8F8;
+    font-family: 'Lato', 'Arial', sans-serif;
     margin: 0 0 0 0;
     padding: 0 0 0 0;
 }
@@ -15,6 +15,14 @@ h1 {
     font-size: 50px;
     text-align: center;
     color: #212121;
+}
+
+.footer_text {
+    font-size: 14px;
+    text-align: center;
+    padding-top: 16px;
+    margin: 0 0 0 0;
+    color: #BABABA;
 }
 
 .title {
@@ -29,6 +37,11 @@ h1 {
     transition-duration: 0.5s;
 }
 
+.list_bottom {
+    background-color: #f2f2f2;
+    height: 49px;
+}
+
 /* Div wrappers for the title and entry sections */
 
 .title_wrapper {
@@ -37,7 +50,7 @@ h1 {
     width: 100%;
     background: #f2f2f2;
     border-bottom-style: double;
-    border-bottom-color: darkgrey;
+    border-bottom-color: #D64242;
     border-bottom-width: 5px;
     display: flex;
 }
@@ -48,7 +61,7 @@ h1 {
     width: 100%;
     background: #f2f2f2;
     border-bottom-style: solid;
-    border-bottom-color: darkgrey;
+    border-bottom-color: #2F5499;
     border-bottom-width: 2px;
     display: flex;
 }

@@ -163,38 +163,85 @@ const checkEmpty = (item_id) => {
 
 // Initializes the map with general mappings for keys. Will be called from the window.onload to initialize as soon as the page is loaded
 const init = () => {
-    // TODO See if there is already a local storage with information. If so, fetch data and assemble map. 
-
-    // If not, then initialize the map with a key for title.
-    const title_key = "title"; 
-    todoList.set(title_key, '');
+    // If there is the map stored on localstorage, we get it.
+    if (localStorage.getItem("todoList")) {
+        // We convert the JSON to a map
+        const list = convertJson(localStorage.getItem("todoList"));
+        // We set todoList to the old list
+        todoList = list;
+        // We load the old list and update the fields
+        generateList();
+    // If the list can't be found, we init a new one
+    } else {
+        // If not, then initialize the map with a key for title.
+        const title_key = "title"; 
+        todoList.set(title_key, '');
+    }
 };
 
 // Updates the todoList, triggers an update to localStorage. Whenever a new list element is added, the function will be called to add it to the map
 const updateList = (key, update) => {
     todoList.set(key, update);
-    updateLocalStorage(key, update);
+    updateLocalStorage();
 };
 
 // Removes item from todoList, triggers update to localStorage
 const removeList = (key) => {
     todoList.delete(key);
-    removeLocalStorage(key);
-};
-
-// Removes item from localStorage
-const removeLocalStorage = (key) => {
-    
+    updateLocalStorage();
 };
 
 // Updates the localStorage todoList.
-const updateLocalStorage = (key, update) => {
-    
+const updateLocalStorage = () => {
+    // Convert map to json data in preperation of sending to localStorage
+    const jsonTODO = convertMap(todoList);
+    // Check to see if there is localStorage. If none, alert user
+    if (localStorage) {
+        // Remove the old map from localstorage
+        localStorage.removeItem("todoList");
+        // Convert map to JSON
+        const list = convertMap();
+        // Add the updated list to localStorage
+        localStorage.setItem("todoList", list);
+    } else {
+        console.log("Could not detect localStorage.")
+    }
 };
 
-// Gets the localStorage todoList. If none, then it initializes a new one
-const getLocalStorage = () => {
-
+// Generates the list from the map, if init finds a map in localStorage
+const generateList = () => {
+    // 1. Get the title of the todo list from the map
+    const title_value = todoList.get("title");
+    // 2. Insert the value into the input field:
+    document.querySelector(".list_title").value = title_value;
+    // See if the title field has any text. If so we display the clear button
+    if (textLen(title) > 0) {
+        document.querySelector(btn_title).style.display = "block";
+    }
+    // 4. Create a copy of the map without the title field. Shallow copy is fine here
+    const map_copy = new Map(todoList);
+    map_copy.delete("title");
+    // . Iterate through the map and add the old list items in
+    map_copy.forEach((list_arr, item_id) => {
+        // Add the item into the list
+        const list_item = list_arr[0];
+        const cross_status = list_arr[1];
+        const list_item_entry = `
+        <div class="entry_wrapper" id="${item_id}" role="list">
+            <label class="checkbox">
+                <input type="checkbox" class="checkboxx" aria-label="Check item off list" onclick="crossEntry(${item_id})">
+            </label>
+            <input class="list_item" aria-label="Edit list item" value="${list_item}" onblur="checkEmpty(${item_id})">
+            <button class="clear_btn" aria-label="Remove item off list" onclick="delEntry(${item_id})">x</button>
+        </div>
+        `;
+        document.querySelector(".todo_list").insertAdjacentHTML('beforeend', list_item_entry);
+        // We check if the list item is crossed off or not, and call the crossEntry() function based on value
+        if (cross_status === 1) {
+            // We toggle the style for those to have the button on clicked style
+            document.getElementById(item_id).querySelector(".checkbox").click();
+        }
+    });
 };
 
 // Functions to help convert from JSON to Map() and vice-versa
@@ -202,7 +249,7 @@ const getLocalStorage = () => {
 // Converts JSON to map
 function convertJson(jsonData) {
     return new Map(JSON.parse(jsonData));
-}
+};
 
 // Converts map to JSON
 function convertMap() {

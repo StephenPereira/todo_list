@@ -1,4 +1,4 @@
-/* Removing default padding and margin settings that some browsers apply */
+/* Removing default padding and margin settings that some browsers apply.  */
 html {
     margin: 0 0 0 0;
     padding: 0 0 0 0;
@@ -153,7 +153,7 @@ button:focus {
     color: red;
 }
 
-/* Checkbox styling */
+/* Checkbox styling with transitions */
 
 .checkbox>input {
     margin-top: 10px;

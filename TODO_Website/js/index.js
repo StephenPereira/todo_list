@@ -1,3 +1,4 @@
+// Used to shorten queryselectors and functions
 const list = ".todo_list";
 const title = ".list_title";
 const entry = ".list_entry";
@@ -237,7 +238,7 @@ const generateList = () => {
     });
 };
 
-// Functions to help convert from JSON to Map() and vice-versa
+// Functions to help convert from JSON to Map() and vice-versa. Used in init and updating
 
 // Converts JSON to map
 const convertJson = (jsonData) => new Map(JSON.parse(jsonData));

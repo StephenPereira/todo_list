@@ -153,13 +153,6 @@ const checkEmpty = (item_id) => {
 };
 
 // 5. STORAGE FUNCTIONS
-// In order to be able to store the list, we will need to store everything in a key system. Every time a field is left, it should trigger a function
-// to update the key item. We will need the title, item ids, item text and state of list item (if it is crossed off or not). All of this will be stored in
-// the key object. All the elements already have listeners or onclicks, we can use these to trigger updates. We should also update the local storage when
-// things are updated. When the browser is closed and opened, we need to read the local storage and use functions to add all the data back in. The title
-// won't require a loop, but the list items will. We loop through and use functions above to insert the data and also cross off items that were previously
-// crossed off.
-
 
 // Initializes the map with general mappings for keys. Will be called from the window.onload to initialize as soon as the page is loaded
 const init = () => {
@@ -247,11 +240,8 @@ const generateList = () => {
 // Functions to help convert from JSON to Map() and vice-versa
 
 // Converts JSON to map
-function convertJson(jsonData) {
-    return new Map(JSON.parse(jsonData));
-};
+const convertJson = (jsonData) => new Map(JSON.parse(jsonData));
+
 
 // Converts map to JSON
-function convertMap() {
-    return JSON.stringify([...todoList]);
-};
+const convertMap = () => JSON.stringify([...todoList]);

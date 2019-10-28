@@ -95,7 +95,7 @@ const addEntry = () => {
         <button class="clear_btn" aria-label="Remove item off list" onclick="delEntry(${item_id})">x</button>
     </div>
     `;
-    document.querySelector(".todo_list").insertAdjacentHTML('beforeend', list_item_entry);
+    document.querySelector(".list_bottom").insertAdjacentHTML('beforebegin', list_item_entry);
     // Adds the item to the map
     updateList(item_id, [list_item, 0]);
 };
@@ -235,7 +235,7 @@ const generateList = () => {
             <button class="clear_btn" aria-label="Remove item off list" onclick="delEntry(${item_id})">x</button>
         </div>
         `;
-        document.querySelector(".todo_list").insertAdjacentHTML('beforeend', list_item_entry);
+        document.querySelector(".list_bottom").insertAdjacentHTML('beforebegin', list_item_entry);
         // We check if the list item is crossed off or not, and call the crossEntry() function based on value
         if (cross_status === 1) {
             // We toggle the style for those to have the button on clicked style

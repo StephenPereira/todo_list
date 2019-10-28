@@ -1,3 +1,4 @@
+// Used to shorten queryselectors and functions
 const list = ".todo_list";
 const title = ".list_title";
 const entry = ".list_entry";

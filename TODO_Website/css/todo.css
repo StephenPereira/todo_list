@@ -53,12 +53,14 @@ h1 {
     display: flex;
 }
 
-.title_wrapper:focus, .entry_wrapper:focus {
+.title_wrapper:focus,
+.entry_wrapper:focus {
     transition-duration: 0.5s;
     background: #c9c9c9;
 }
 
-.title_wrapper:hover, .entry_wrapper:hover {
+.title_wrapper:hover,
+.entry_wrapper:hover {
     background: #dbdbdb;
     transition-duration: 0.5s;
 }
@@ -76,7 +78,8 @@ h1 {
 }
 
 
-.list_entry, .list_item {
+.list_entry,
+.list_item {
     padding: 10px 10px 10px 10px;
     width: 100%;
     height: 100%;
@@ -105,11 +108,13 @@ button:focus {
 }
 
 /* Button styling */
-.clear_btn_title, .clear_btn_entry, .clear_btn {
+.clear_btn_title,
+.clear_btn_entry,
+.clear_btn {
     padding: 0px 15px;
-    font-weight:100;
+    font-weight: 100;
     font-size: 30px;
-    color:darkgrey;
+    color: darkgrey;
     border: none;
     background: none;
     cursor: pointer;
@@ -118,12 +123,18 @@ button:focus {
     transition-duration: 0.1s;
 }
 
-.clear_btn_title, .clear_btn_entry {
+.clear_btn_title,
+.clear_btn_entry {
     display: none;
 }
 
 /* Button styling for hover or clear */
-.clear_btn_title:focus, .clear_btn_entry:focus, .clear_btn:focus, .clear_btn_title:hover, .clear_btn_entry:hover, .clear_btn:hover {
+.clear_btn_title:focus,
+.clear_btn_entry:focus,
+.clear_btn:focus,
+.clear_btn_title:hover,
+.clear_btn_entry:hover,
+.clear_btn:hover {
     transition-duration: 0.5s;
     font-weight: 300;
     color: red;
@@ -131,7 +142,7 @@ button:focus {
 
 /* Checkbox styling */
 
-.checkbox > input {
+.checkbox>input {
     margin-top: 10px;
     margin-left: 10px;
     width: 30px;
@@ -145,30 +156,37 @@ button:focus {
     appearance: none;
 }
 
-.checkbox > input:checked {
+.checkbox>input:checked {
     border: 2px solid #41B883;
     background: #41B883;
 }
 
-.checkbox > input:checked + .list_item {
+.checkbox>input:checked+.list_item {
     text-decoration: line-through;
 }
 
-.checkbox > input:hover {
+.checkbox>input:hover {
     border: 2px solid #41B883;
     transition-duration: 0.5s;
 }
 
-.checkbox > input:focus {
+.checkbox>input:focus {
     border: 2px solid #41B883;
     transition-duration: 0.5s;
 }
 
-/* Shrink input box in order to fit on smaller screens */
+/* Shrink or increase list size in order to fit on smaller or larger screens */
 
-@media screen and (max-width: 553px) {
+@media screen and (max-width: 600px) {
     .todo_list {
         width: 450px;
+        transition-duration: 0.5s;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .todo_list {
+        width: 70%;
         transition-duration: 0.5s;
     }
 }

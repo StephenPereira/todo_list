@@ -163,17 +163,21 @@ button:focus {
 }
 
 .checkbox>input:checked {
-    border: 2px solid;
+    border: 2px solid #41B883;
     background: #41B883;
 }
 
-.checkbox>input:checked+.list-item {
+.checkbox>input:checked+.list_item {
     text-decoration: line-through;
 }
 
-.checkbox>input:hover,
+.checkbox>input:hover {
+    border: 2px solid #287553;
+    transition-duration: 0.5s;
+}
+
 .checkbox>input:focus {
-    border: 2px solid #41B883;
+    border: 2px solid #287553;
     transition-duration: 0.5s;
 }
 

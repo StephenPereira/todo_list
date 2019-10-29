@@ -1,6 +1,8 @@
 # todo_list
 My To-Do List Website, built using HTML, CSS & JS (ES6)
 
+https://stephenpereira.github.io/todo_list/index.html
+
 ## General information
 The To-Do list is currently a work in progress. It should function well in all browsers, and has basic functionality. The list uses a combination of event listeners and DOM events to trigger functions and add items to the list.
 Hover effects are added for better visability, and all fields and buttons can be accessed using a keyboard. Labels are

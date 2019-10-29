@@ -1,10 +1,9 @@
 // Used to shorten queryselectors and functions
-const list = ".todo_list";
-const title = ".list_title";
-const entry = ".list_entry";
-const item = ".list_item";
-const btn_title = ".clear_btn_title";
-const btn_entry = ".clear_btn_entry";
+const title = ".list-title";
+const entry = ".list-entry";
+const item = ".list-item";
+const btnTitle = ".clear-btn-title";
+const btnEntry = ".clear-btn-entry";
 let todoList = new Map();
 
 // 1. HELPER FUNCTIONS
@@ -53,15 +52,13 @@ const toggleBtn = {
         });
         // Event listener for the delete button - shows on hover
     },
-
-    // TODO: Add a function where it hides the button when the field is not in focus.
 };
 
 // Fixing problem of JS executing before DOM is finished loading. Elements that have to be loaded right away
 window.onload = () => {
     init();
-    toggleBtn.showBtn(title, btn_title);
-    toggleBtn.showBtn(entry, btn_entry);
+    toggleBtn.showBtn(title, btnTitle);
+    toggleBtn.showBtn(entry, btnEntry);
     // Will insert only if enter is pressed and there is text inside the field
     document.querySelector(entry).addEventListener('keypress', (e) => {
         if (e.key === 'Enter' && textLen(entry) > 0) {
@@ -82,72 +79,72 @@ window.onload = () => {
 // Function takes text from entry field for notes, and adds it to the list. Checks to see if field is empty before. 
 const addEntry = () => {
     // 1. Obtain the list entry from the entry field and then clear the field
-    const list_item = getText(entry);
+    const listItem = getText(entry);
     clearEntry();
     // 2. Generate an ID for the entry. We will need this in order to delete this line or cross it off
-    const item_id = Date.now() + Math.floor(Math.random() * 99);
+    const itemId = Date.now() + Math.floor(Math.random() * 99);
     // 3. Insert list item below the entry field
-    const list_item_entry = `
-    <div class="entry_wrapper" id="${item_id}" role="list">
+    const listItemEntry = `
+    <div class="entry-wrapper" id="${itemId}" role="list">
         <label class="checkbox">
-            <input type="checkbox" class="checkbox" aria-label="Check item off list" onclick="crossEntry(${item_id})">
+            <input type="checkbox" class="checkbox" aria-label="Check item off list" onclick="crossEntry(${itemId})">
         </label>
-        <input class="list_item" aria-label="Edit list item" value="${list_item}" onblur="checkEmpty(${item_id})">
-        <button class="clear_btn" aria-label="Remove item off list" onclick="delEntry(${item_id})">x</button>
+        <input class="list-item" aria-label="Edit list item" value="${listItem}" onblur="checkEmpty(${itemId})">
+        <button class="clear-btn" aria-label="Remove item off list" onclick="delEntry(${itemId})">x</button>
     </div>
     `;
-    document.querySelector(".list_bottom").insertAdjacentHTML('beforebegin', list_item_entry);
+    document.querySelector(".list-bottom").insertAdjacentHTML('beforebegin', listItemEntry);
     // Adds the item to the map
-    updateList(item_id, [list_item, 0]);
+    updateList(itemId, [listItem, 0]);
 };
 
 // Function crosses off item in list when button is pressed
-const crossEntry = (item_id) => {
-    const item = document.getElementById(item_id).querySelector(".list_item");
+const crossEntry = (itemId) => {
+    const item = document.getElementById(itemId).querySelector(".list-item");
     if (item.style.textDecorationLine === "line-through") {
         item.style.textDecorationLine = "none";
         // Gets the value array
-        const state = todoList.get(item_id)
+        const state = todoList.get(itemId);
         // Changes the value from 1 (crossed out) to 0 (not crossed out)
         state[1] = 0;
         // Updates map and localStorage
-        updateList(item_id, state);
+        updateList(itemId, state);
 
     } else {
         item.style.textDecorationLine = "line-through";
         // Gets the value array
-        const state = todoList.get(item_id)
+        const state = todoList.get(itemId);
         // Changes the value from 0 to 1
         state[1] = 1;
         // Updates map and localStorage
-        updateList(item_id, state);
+        updateList(itemId, state);
     }
 };
 
 // 4. DELETE FUNCTIONS
 
 // Function deletes the item from the list 
-const delEntry = (item_id) => {
-    document.getElementById(item_id).remove();
+const delEntry = (itemId) => {
+    document.getElementById(itemId).remove();
     // Removes item from map and localStorage
-    removeList(item_id);
+    removeList(itemId);
 };
 
 // If an entry in the list is empty and user exits field, the item is deleted
-const checkEmpty = (item_id) => {
-    if (document.getElementById(item_id)) {
-        const listEntry = document.getElementById(item_id).querySelector(item).value;
+const checkEmpty = (itemId) => {
+    if (document.getElementById(itemId)) {
+        const listEntry = document.getElementById(itemId).querySelector(item).value;
         const entryField = document.querySelector(entry);
         // Gets the value array
-        const state = todoList.get(item_id)
+        const state = todoList.get(itemId);
         // Changes the value of the list entry
         state[0] = listEntry;
         // Updates map and localStorage
-        updateList(item_id, state);
+        updateList(itemId, state);
         if (listEntry == 0) {
             // If field is empty, it will also remove it from the map
-            removeList(item_id);
-            delEntry(item_id);
+            removeList(itemId);
+            delEntry(itemId);
             entryField.focus();
         }
     }
@@ -168,8 +165,8 @@ const init = () => {
     // If the list can't be found, we init a new one
     } else {
         // If not, then initialize the map with a key for title.
-        const title_key = "title"; 
-        todoList.set(title_key, '');
+        const titleKey = "title"; 
+        todoList.set(titleKey, '');
     }
 };
 
@@ -187,8 +184,6 @@ const removeList = (key) => {
 
 // Updates the localStorage todoList.
 const updateLocalStorage = () => {
-    // Convert map to json data in preperation of sending to localStorage
-    const jsonTODO = convertMap(todoList);
     // Check to see if there is localStorage. If none, alert user
     if (localStorage) {
         // Remove the old map from localstorage
@@ -198,42 +193,42 @@ const updateLocalStorage = () => {
         // Add the updated list to localStorage
         localStorage.setItem("todoList", list);
     } else {
-        console.log("Could not detect localStorage.")
+        console.log("Could not detect localStorage.");
     }
 };
 
 // Generates the list from the map, if init finds a map in localStorage
 const generateList = () => {
     // 1. Get the title of the todo list from the map
-    const title_value = todoList.get("title");
+    const titleValue = todoList.get("title");
     // 2. Insert the value into the input field:
-    document.querySelector(".list_title").value = title_value;
+    document.querySelector(title).value = titleValue;
     // See if the title field has any text. If so we display the clear button
     if (textLen(title) > 0) {
-        document.querySelector(btn_title).style.display = "block";
+        document.querySelector(btnTitle).style.display = "block";
     }
     // 4. Create a copy of the map without the title field. Shallow copy is fine here
-    const map_copy = new Map(todoList);
-    map_copy.delete("title");
+    const mapCopy = new Map(todoList);
+    mapCopy.delete("title");
     // . Iterate through the map and add the old list items in
-    map_copy.forEach((list_arr, item_id) => {
+    mapCopy.forEach((listArray, itemId) => {
         // Add the item into the list
-        const list_item = list_arr[0];
-        const cross_status = list_arr[1];
-        const list_item_entry = `
-        <div class="entry_wrapper" id="${item_id}" role="list">
+        const listItem = listArray[0];
+        const crossStatus = listArray[1];
+        const listItemEntry = `
+        <div class="entry-wrapper" id="${itemId}" role="list">
             <label class="checkbox">
-                <input type="checkbox" class="checkboxx" aria-label="Check item off list" onclick="crossEntry(${item_id})">
+                <input type="checkbox" class="checkboxx" aria-label="Check item off list" onclick="crossEntry(${itemId})">
             </label>
-            <input class="list_item" aria-label="Edit list item" value="${list_item}" onblur="checkEmpty(${item_id})">
-            <button class="clear_btn" aria-label="Remove item off list" onclick="delEntry(${item_id})">x</button>
+            <input class="list-item" aria-label="Edit list item" value="${listItem}" onblur="checkEmpty(${itemId})">
+            <button class="clear-btn" aria-label="Remove item off list" onclick="delEntry(${itemId})">x</button>
         </div>
         `;
-        document.querySelector(".list_bottom").insertAdjacentHTML('beforebegin', list_item_entry);
+        document.querySelector(".list-bottom").insertAdjacentHTML('beforebegin', listItemEntry);
         // We check if the list item is crossed off or not, and call the crossEntry() function based on value
-        if (cross_status === 1) {
+        if (crossStatus === 1) {
             // We toggle the style for those to have the button on clicked style
-            document.getElementById(item_id).querySelector(".checkbox").click();
+            document.getElementById(itemId).querySelector(".checkbox").click();
         }
     });
 };

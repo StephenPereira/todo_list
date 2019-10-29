@@ -1,35 +1,37 @@
 /* Removing default padding and margin settings that some browsers apply.  */
-html {
+html,
+body,
+.footer-text {
     margin: 0 0 0 0;
     padding: 0 0 0 0;
 }
 
 body {
     background-color: #F0F0F0;
+    color: #F0F0F0;
     font-family: 'Lato', 'Arial', sans-serif;
-    margin: 0 0 0 0;
-    padding: 0 0 0 0;
+}
+
+h1,
+.footer-text {
+    text-align: center;
+    color: #212121;
 }
 
 h1 {
     font-size: 50px;
-    text-align: center;
-    color: #212121;
 }
 
-.footer_text {
+.footer-text {
     font-size: 14px;
-    text-align: center;
     padding-top: 16px;
-    margin: 0 0 0 0;
-    color: #212121;
 }
 
 .title {
     width: auto;
 }
 
-.todo_list {
+.todo-list {
     width: 550px;
     margin: auto;
     background-color: #f2f2f2;
@@ -37,79 +39,70 @@ h1 {
     transition-duration: 0.5s;
 }
 
-.list_bottom {
+.list-bottom {
     background-color: #f2f2f2;
     height: 49px;
 }
 
 /* Div wrappers for the title and entry sections */
 
-.title_wrapper {
+.title-wrapper,
+.entry-wrapper {
     color: #212121;
     box-sizing: border-box;
     width: 100%;
     background: #f2f2f2;
+}
+
+.title-wrapper {
     border-bottom-style: double;
     border-bottom-color: #D64242;
     border-bottom-width: 5px;
     display: flex;
 }
 
-.entry_wrapper {
-    color: #212121;
-    box-sizing: border-box;
-    width: 100%;
-    background: #f2f2f2;
+.entry-wrapper {
     border-bottom-style: solid;
     border-bottom-color: #2F5499;
     border-bottom-width: 2px;
     display: flex;
 }
 
-.title_wrapper:focus,
-.entry_wrapper:focus {
+.title-wrapper:focus,
+.entry-wrapper:focus {
     transition-duration: 0.5s;
     background: #c9c9c9;
 }
 
-.title_wrapper:hover,
-.entry_wrapper:hover {
+.title-wrapper:hover,
+.entry-wrapper:hover {
     background: #dbdbdb;
     transition-duration: 0.5s;
 }
 
 /* Actual entry fields for the input fields */
 
-.list_title {
+.list-title,
+.list-entry,
+.list-item,
+.list-strike {
     padding: 10px 10px 10px 10px;
     width: 100%;
     height: 100%;
+    /* To prevent default focus styling */
+    border-style: none;
+    background: none;
+}
+
+.list-title {
     font-size: 30px;
-    /* To prevent default focus styling */
-    border-style: none;
-    background: none;
 }
 
 
-.list_entry,
-.list_item {
-    padding: 10px 10px 10px 10px;
-    width: 100%;
-    height: 100%;
+.list-entry,
+.list-item,
+.list-strike {
     font-size: 23px;
-    /* To prevent default focus styling */
-    border-style: none;
-    background: none;
-}
-
-.list_strike {
-    padding: 10px 10px 10px 10px;
-    width: 100%;
-    height: 100%;
-    font-size: 23px;
-    /* To prevent default focus styling */
-    border-style: none;
-    background: none;
 }
 
 /* Removing the blue border from text imput fields */
@@ -121,9 +114,9 @@ button:focus {
 }
 
 /* Button styling */
-.clear_btn_title,
-.clear_btn_entry,
-.clear_btn {
+.clear-btn-title,
+.clear-btn-entry,
+.clear-btn {
     padding: 0px 15px;
     font-weight: 100;
     font-size: 30px;
@@ -136,18 +129,18 @@ button:focus {
     transition-duration: 0.1s;
 }
 
-.clear_btn_title,
-.clear_btn_entry {
+.clear-btn-title,
+.clear-btn-entry {
     display: none;
 }
 
 /* Button styling for hover or clear */
-.clear_btn_title:focus,
-.clear_btn_entry:focus,
-.clear_btn:focus,
-.clear_btn_title:hover,
-.clear_btn_entry:hover,
-.clear_btn:hover {
+.clear-btn-title:focus,
+.clear-btn-entry:focus,
+.clear-btn:focus,
+.clear-btn-title:hover,
+.clear-btn-entry:hover,
+.clear-btn:hover {
     transition-duration: 0.5s;
     font-weight: 300;
     color: red;
@@ -170,19 +163,15 @@ button:focus {
 }
 
 .checkbox>input:checked {
-    border: 2px solid #41B883;
+    border: 2px solid;
     background: #41B883;
 }
 
-.checkbox>input:checked+.list_item {
+.checkbox>input:checked+.list-item {
     text-decoration: line-through;
 }
 
-.checkbox>input:hover {
-    border: 2px solid #41B883;
-    transition-duration: 0.5s;
-}
-
+.checkbox>input:hover,
 .checkbox>input:focus {
     border: 2px solid #41B883;
     transition-duration: 0.5s;
@@ -191,14 +180,14 @@ button:focus {
 /* Shrink or increase list size in order to fit on smaller or larger screens */
 
 @media screen and (max-width: 600px) {
-    .todo_list {
+    .todo-list {
         width: 450px;
         transition-duration: 0.5s;
     }
 }
 
 @media screen and (min-width: 900px) {
-    .todo_list {
+    .todo-list {
         width: 70%;
         transition-duration: 0.5s;
     }

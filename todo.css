@@ -1,0 +1,245 @@
+/* Removing default padding and margin settings that some browsers apply.  */
+html,
+body,
+.footer-text {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+
+body {
+    background-color: #F0F0F0;
+    color: #F0F0F0;
+    font-family: 'Lato', 'Arial', sans-serif;
+}
+
+h1,
+.footer-text {
+    text-align: center;
+    color: #212121;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+.footer-text {
+    font-size: 14px;
+    padding-top: 16px;
+}
+
+.title {
+    width: auto;
+}
+
+.todo-list {
+    width: 550px;
+    margin: auto;
+    background-color: #f2f2f2;
+    box-shadow: 1px 3px 10px #3C3C3C;
+    transition-duration: 0.5s;
+}
+
+.list-bottom {
+    background-color: #f2f2f2;
+    height: 49px;
+}
+
+/* Div wrappers for the title and entry sections */
+
+.title-wrapper,
+.entry-wrapper {
+    color: #212121;
+    box-sizing: border-box;
+    width: 100%;
+    background: #f2f2f2;
+}
+
+.title-wrapper {
+    border-bottom-style: double;
+    border-bottom-color: #D64242;
+    border-bottom-width: 5px;
+    display: flex;
+}
+
+.entry-wrapper {
+    border-bottom-style: solid;
+    border-bottom-color: #2F5499;
+    border-bottom-width: 2px;
+    display: flex;
+}
+
+.title-wrapper:focus,
+.entry-wrapper:focus {
+    transition-duration: 0.5s;
+    background: #c9c9c9;
+}
+
+.title-wrapper:hover,
+.entry-wrapper:hover {
+    background: #dbdbdb;
+    transition-duration: 0.5s;
+}
+
+/* Actual entry fields for the input fields */
+
+.list-title,
+.list-entry,
+.list-item,
+.list-strike {
+    padding: 10px 10px 10px 10px;
+    width: 100%;
+    height: auto;
+    /* To prevent default focus styling */
+    border-style: none;
+    background: none;
+}
+
+.list-title {
+    font-size: 30px;
+}
+
+
+.list-entry,
+.list-item,
+.list-strike {
+    font-size: 23px;
+}
+
+/* Removing the blue border from text imput fields */
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+/* Button styling */
+.clear-btn-title,
+.clear-btn-entry,
+.clear-btn {
+    padding: 0px 15px;
+    font-weight: 100;
+    font-size: 30px;
+    color: darkgrey;
+    border: none;
+    background: none;
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+    transition-duration: 0.1s;
+}
+
+.clear-btn-title,
+.clear-btn-entry {
+    display: none;
+}
+
+/* Button styling for hover or clear */
+.clear-btn-title:focus,
+.clear-btn-entry:focus,
+.clear-btn:focus,
+.clear-btn-title:hover,
+.clear-btn-entry:hover,
+.clear-btn:hover {
+    transition-duration: 0.5s;
+    font-weight: 300;
+    color: red;
+}
+
+/* Checkbox styling with transitions */
+
+.checkbox>input {
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid #34495E;
+    transition-duration: 0.5s;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.checkbox>input:checked {
+    border: 2px solid #41B883;
+    background: #41B883;
+}
+
+.checkbox>input:checked+.list_item {
+    text-decoration: line-through;
+}
+
+.checkbox>input:hover {
+    border: 2px solid #287553;
+    transition-duration: 0.5s;
+}
+
+.checkbox>input:focus {
+    border: 2px solid #287553;
+    transition-duration: 0.5s;
+}
+
+/* Shrink or increase list size in order to fit on smaller or larger screens */
+
+@media screen and (max-width: 600px) {
+    .todo-list {
+        width: 85%;
+        transition-duration: 0.5s;
+    }
+}
+
+    h1 {
+        font-size: 30px;
+    }
+
+    .footer-text {
+        font-size: 12px;
+        vertical-align: middle;
+    }
+
+    .list-title {
+        font-size: 25px;
+    }
+
+    .list-entry,
+    .list-item,
+    .list-strike {
+        font-size: 16px;
+    }
+
+    .list-item {
+        height: auto;
+    }
+
+@media screen and (min-width: 900px) {
+    .todo-list {
+        width: 90%;
+        transition-duration: 0.5s;
+    }
+
+    h1 {
+        font-size: 50px;
+    }
+
+    .footer-text {
+        font-size: 16px;
+        vertical-align: middle;
+        padding-top: 15px;
+    }
+
+    .list-title {
+        font-size: 35px;
+    }
+
+    .list-entry,
+    .list-item,
+    .list-strike {
+        font-size: 25px;
+    }
+
+    .list-item {
+        height: auto;
+    }
+}

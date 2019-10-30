@@ -162,10 +162,10 @@ const init = () => {
         todoList = list;
         // We load the old list and update the fields
         generateList();
-    // If the list can't be found, we init a new one
+        // If the list can't be found, we init a new one
     } else {
         // If not, then initialize the map with a key for title.
-        const titleKey = "title"; 
+        const titleKey = "title";
         todoList.set(titleKey, '');
     }
 };

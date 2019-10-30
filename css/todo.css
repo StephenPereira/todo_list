@@ -88,7 +88,7 @@ h1 {
 .list-strike {
     padding: 10px 10px 10px 10px;
     width: 100%;
-    height: 100%;
+    height: auto;
     /* To prevent default focus styling */
     border-style: none;
     background: none;
@@ -185,14 +185,61 @@ button:focus {
 
 @media screen and (max-width: 600px) {
     .todo-list {
-        width: 450px;
+        width: 85%;
         transition-duration: 0.5s;
     }
 }
 
+    h1 {
+        font-size: 30px;
+    }
+
+    .footer-text {
+        font-size: 12px;
+        vertical-align: middle;
+    }
+
+    .list-title {
+        font-size: 25px;
+    }
+
+    .list-entry,
+    .list-item,
+    .list-strike {
+        font-size: 16px;
+    }
+
+    .list-item {
+        height: auto;
+    }
+
 @media screen and (min-width: 900px) {
     .todo-list {
-        width: 70%;
+        width: 90%;
         transition-duration: 0.5s;
+    }
+
+    h1 {
+        font-size: 50px;
+    }
+
+    .footer-text {
+        font-size: 16px;
+        vertical-align: middle;
+        padding-top: 0px;
+    }
+
+    .list-title {
+        font-size: 35px;
+    }
+
+    .list-entry,
+    .list-item,
+    .list-strike {
+        font-size: 25px;
+    }
+
+    .list-item {
+        height: auto;
     }
 }

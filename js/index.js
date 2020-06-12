@@ -109,7 +109,6 @@ const crossEntry = (itemId) => {
         state[1] = 0;
         // Updates map and localStorage
         updateList(itemId, state);
-
     } else {
         item.style.textDecorationLine = "line-through";
         // Gets the value array

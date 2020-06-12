@@ -1,4 +1,5 @@
 /* Removing default padding and margin settings that some browsers apply.  */
+
 html,
 body,
 .footer-text {
@@ -97,7 +98,6 @@ h1 {
 .list-title {
     font-size: 30px;
 }
-
 
 .list-entry,
 .list-item,

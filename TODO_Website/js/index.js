@@ -238,7 +238,7 @@ const generateList = () => {
     });
 };
 
-// Functions to help convert from JSON to Map() and vice-versa
+// Functions to help convert from JSON to Map() and vice-versa. Used in init and updating
 
 // Converts JSON to map
 const convertJson = (jsonData) => new Map(JSON.parse(jsonData));

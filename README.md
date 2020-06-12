@@ -11,5 +11,8 @@ added so text-to-speech software works well, and fonts are clear so those with v
 ### Version 1.0
 The To-Do list has been given a minor design update to make it more accessible and less grey. The list now mirrors the look of a card or paper, giving it a familiar look. All the list items and title are stored in a map, which is then used to update local storage. 
 
+#### Version 1.1
+Made some bug fixes to the code, and fixed scaling for the elements for various screen sizes.
+
 ### Currently being worked on:
 The next steps are to clean up the code and seperate the javaScript into components instead of having all in one file. Eventually it will be packaged using Node.js and NPM and bundled with Webpack. Eventually React will be implemented as well. 

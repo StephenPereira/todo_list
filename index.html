@@ -3,38 +3,39 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/todo.css">
     <!-- Google Fonts external script for Lato -->
     <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
-    <script type="text/javascript" src="./js/index.js"></script>
     <title>To-Do List</title>
 </head>
 
 <body>
     <!-- Title of the page -->
-    <div class="title" role="text">
+    <div class="title" role="heading">
         <h1>A Very Simple To-Do List.</h1>
     </div>
 
     <!-- The to-do list. All items will be contained within this div -->
-    <div class="todo_list" role="list">
-        <div class="title_wrapper" role="text">
+    <div class="todo-list" role="list">
+        <div class="title-wrapper" role="form">
             <!-- Input field for the title, allows you to set a name for the list -->
-            <input class="list_title" placeholder="Title..." type="text" aria-label="Title Input">
-            <button class="clear_btn_title" aria-label="Clear Title" onclick="clearTitle()">x</button>
+            <input class="list-title" placeholder="Title..." type="text" aria-label="Title Input">
+            <button class="clear-btn-title" aria-label="Clear Title" onclick="clearTitle()">x</button>
         </div>
 
-        <div class="entry_wrapper" role="listitem">
+        <div class="entry-wrapper" role="listitem">
             <!-- Line to enter actual list elements -->
-            <input class="list_entry" placeholder="I have to..." type="text" aria-label="Enter list item">
-            <button class="clear_btn_entry" aria-label="Clear item entry" onclick="clearEntry()">x</button>
+            <input class="list-entry" placeholder="I have to..." type="text" aria-label="Enter list item">
+            <button class="clear-btn-entry" aria-label="Clear item entry" onclick="clearEntry()">x</button>
         </div>
 
         <!-- Seperator at the bottom to make it look more like a card -->
-        <div class="list_bottom" role="doc-credits">
-            <p class="footer_text">© 2019 Stephen Pereira. Lato font from Google Fonts.</p>
+        <div class="list-bottom" role="doc-credits">
+            <p class="footer-text">© 2019 Stephen Pereira. Lato font from Google Fonts.</p>
         </div>
     </div>
+    <script src="./js/index.js"></script>
 </body>
 
 </html>
